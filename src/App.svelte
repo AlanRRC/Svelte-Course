@@ -1,7 +1,17 @@
 <script>
-	let name = 'Alan';
+	let firstName = 'Alan';
+	let lastName  = 'Simpson'
 	let beltColour = 'black'
 	
+	//	creates a reactive value
+	$: fullName = `${firstName} ${lastName}`
+
+	//	reactive statement
+	$: {
+		console.log(beltColour)
+		console.log(fullName)
+	}
+
 	const handleClick = () => {
 		beltColour = 'orange'
 	}
@@ -13,10 +23,9 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p style="color: {beltColour}">{beltColour} belt</p>
-	<button on:click={handleClick}>update belt click</button>
-	<!-- <input type="text" on:input={handleInput} value={beltColour}> -->
+	<p>{fullName} {beltColour} belt</p>
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
 	<input type="text" bind:value={beltColour}>
 </main>
 
